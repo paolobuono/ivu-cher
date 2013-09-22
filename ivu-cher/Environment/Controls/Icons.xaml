@@ -1,0 +1,60 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <BitmapImage x:Key="CloseIcon" UriSource="../Icons/close.png"/>
+    <BitmapImage x:Key="Puzzle" UriSource="../Icons/puzzle.png"/>
+    <BitmapImage x:Key="Museum" UriSource="../Icons/museum.png"/>
+    <BitmapImage x:Key="Explore" UriSource="../Icons/explore.png"/>
+    <BitmapImage x:Key="Urban" UriSource="../Icons/urban.png"/>
+
+    <!--TemplateAndoid-->
+    <BitmapImage x:Key="tmplAndObiettivoRaggiunto" UriSource="../../Icons/Android/arrivato.png"/>
+    <BitmapImage x:Key="tmplAndContenuti" UriSource="../../Icons/Android/contenutiBlank.jpg"/>
+    <BitmapImage x:Key="tmplAndWelcomeScreen" UriSource="../../Icons/Android/welcomescreen.jpg"/>
+    <!--Fine TemplateAndoid-->
+
+
+
+    <BitmapImage x:Key="PocketPc" UriSource="../Icons/pocketpc.png"/>
+    <BitmapImage x:Key="Documents" UriSource="../Icons/text.png"/>
+    <BitmapImage x:Key="Video" UriSource="../Icons/video.png"/>
+    <BitmapImage x:Key="Sound" UriSource="../Icons/sound.png"/>
+    <BitmapImage x:Key="Pictures" UriSource="../Icons/pictures.png"/>
+    <BitmapImage x:Key="3D" UriSource="../Icons/3d.png"/>
+    <BitmapImage x:Key="Add" UriSource="../Icons/add.png"/>
+    <BitmapImage x:Key="Cancel" UriSource="../Icons/cancel.png"/>
+    <BitmapImage x:Key="Question" UriSource="../Icons/question.png"/>
+    <BitmapImage x:Key="Mark" UriSource="../Icons/Mark.png"/>
+    
+    <!-- Building Block toolbar button icons-->
+    <!--                    Urban Game                        -->
+    <BitmapImage x:Key="City" UriSource="../NewFolder1/city.png"/>
+    <BitmapImage x:Key="Connector" UriSource="../NewFolder1/connector.png"/>
+    <BitmapImage x:Key="Monument" UriSource="../NewFolder1/monument.png"/>
+    <BitmapImage x:Key="Questions" UriSource="../NewFolder1/questions.png"/>
+    <BitmapImage x:Key="Resource" UriSource="../NewFolder1/resource.png"/> 
+
+    <!--                    Museum Guide                        -->
+    <BitmapImage x:Key="Museum Guide" UriSource="../NewFolder1/musGuide.png"/>
+    <BitmapImage x:Key="Map" UriSource="../NewFolder1/map.png"/>
+    <BitmapImage x:Key="Theme" UriSource="../NewFolder1/theme.png"/>
+    <BitmapImage x:Key="Item" UriSource="../NewFolder1/item.png"/>
+    <!--<BitmapImage x:Key="Connector" UriSource="../NewFolder1/connector.png"/>-->
+
+    <!--                    History Puzzle                    -->
+    <BitmapImage x:Key="History-Puzzle" UriSource="../NewFolder1/historypuzzle.png"/>
+    <BitmapImage x:Key="PuzzleBtn" UriSource="../NewFolder1/puzzlebtn.png"/>
+    <BitmapImage x:Key="QeA" UriSource="../NewFolder1/questions.png"/>
+    <!--<BitmapImage x:Key="Map" UriSource="../NewFolder1/map.png"/>-->
+    <!--<BitmapImage x:Key="Connector" UriSource="../NewFolder1/connector.png"/>-->
+
+    <!--                    Excursion Game                        -->
+    <BitmapImage x:Key="Excursion-Game" UriSource="../NewFolder1/excGame.png"/>
+    <BitmapImage x:Key="Prologue" UriSource="../NewFolder1/prologue.png"/>
+    <BitmapImage x:Key="Mission" UriSource="../NewFolder1/mission.png"/>
+    <BitmapImage x:Key="Cont. Sounds" UriSource="../NewFolder1/contSounds.png"/>
+    <BitmapImage x:Key="Goal" UriSource="../NewFolder1/goal.png"/>
+    <BitmapImage x:Key="Mission List" UriSource="../NewFolder1/missList.png"/>
+    <BitmapImage x:Key="Oracle Hint" UriSource="../NewFolder1/orHint.png"/>
+    <!--<BitmapImage x:Key="Connector" UriSource="../NewFolder1/connector.png"/>--> 
+    
+</ResourceDictionary>

@@ -1,0 +1,29 @@
+﻿<UserControl x:Class="AvengersUtd.Explore.Environment.Controls.WMPreviewPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="378" Width="378" Background="#FFF0F0F0"
+             Padding="4">
+    <DockPanel LastChildFill="True">
+        <StackPanel DockPanel.Dock="Top">
+        <TextBlock Text="Windows Mobile 6.5 Preview" FontSize="24" TextAlignment="Center" FontWeight="Bold"/>
+        <ComboBox Margin="240 0 0 8" Width="128" Text="Default Template">
+                <ComboBoxItem Content="Default Template" IsSelected="True" />
+            </ComboBox>
+        </StackPanel>
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <Canvas Width="370" Height="560" >
+            <Canvas.Background>
+                <ImageBrush ImageSource="/Environment;component/Icons/pocketpc.png" Stretch="Uniform" TileMode="None" />
+            </Canvas.Background>
+                <Border x:Name="previewArea"  x:FieldModifier="private" 
+                        Width="288" Height="384" BorderBrush="Red"
+                        BorderThickness="4" Canvas.Left="40" Canvas.Top="60">
+            </Border>
+        </Canvas>
+        </ScrollViewer>
+
+    </DockPanel>
+</UserControl>

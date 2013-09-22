@@ -1,0 +1,152 @@
+﻿
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+   <head>
+      <title>Bing Maps</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+      <script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=6.3&mkt=it-IT"></script>
+
+      <script type="text/javascript">
+          //Globals:
+          var action = "pan";
+          var map = null;
+          var zoomLevel = 9;
+          var mapkey = "";
+          var pin;
+          var pinIcon = "";
+          var positionName = "";
+          var LA = new VELatLong(41.88, 12.47);
+          /////////////////////////////////////////
+          /* Functions called by wpf application */
+          /////////////////////////////////////////
+          //Set the bing map key:
+          function SetKey(key) {
+              mapkey = key;
+          }
+
+          //Load the map:
+          function GetMap() {
+              map = new VEMap('myMap');
+              map.SetCredentials(mapkey);
+              map.LoadMap(LA, 15, VEMapStyle.Road, false, VEMapMode.Mode2D, true, 1); 
+              map.SetZoomLevel(zoomLevel);
+              map.AttachEvent("onclick", OnClick);
+              latLong = map.GetCenter(); 
+          }
+
+          //Center the map on the given latitude, longitude:
+          function SetLatLong(lat, lng) {
+              var x = new VELatLong(lat, lng, 0, VEAltitudeMode.Default);
+              zoomLevel = map.GetZoomLevel();
+              map.SetCenterAndZoom(x, zoomLevel);
+          }
+
+          //Set the action on click:
+          function SetAction(act) {
+              action = act;
+              NotifyActionChange();
+          }
+
+          function ClearPins() {
+              map.DeleteAllShapes();
+          }
+
+          function SetPin(latitude, longitude, zoomLevel, positionName) {
+              var veLatLong = new VELatLong(latitude, longitude, 0, VEAltitudeMode.Default);
+              if (zoomLevel == 0)
+                  map.SetCenter(veLatLong);
+              else
+                  map.SetCenterAndZoom(veLatLong, zoomLevel);
+              pin = new VEShape(VEShapeType.Pushpin, veLatLong);
+              if (pinIcon.length > 0) {
+                  pin.SetCustomIcon('<div><img src=\"data:image/gif;base64,' + pinIcon + '\" border=\"0\" style=\"position:relative;margin-top:-2px;margin-left:-1px;\" /></div>');
+                  pin.SetDescription('<div style="width: 90px; height: 30px; background-color: white; color: black">' +
+               '<b>' + positionName + '</b> </div>');
+
+              }
+              pin.Draggable = true; 
+              // Assign the shape drag event handlers 
+              pin.onstartdrag = StartDragHandler;
+              pin.ondrag = DragHandler;
+              pin.onenddrag = EndDragHandler; 
+              // Show an info box to indicate the pushpin can be dragged.  
+              map.ClearInfoBoxStyles();
+              map.AddShape(pin);
+              NotifyPinAdded(veLatLong.Latitude, veLatLong.Longitude);
+
+          }
+          function StartDragHandler(e) {
+              document.getElementById("divInfo").innerHTML = "Dragging started (onstartdrag event)."; 
+          } 
+          function DragHandler(e) {
+              document.getElementById("divInfo").innerHTML = "Dragging in process (ondrag event)."; 
+          } 
+          function EndDragHandler(e) {
+              document.getElementById("divInfo").innerHTML = "Dragging stopped (onenddrag event)."; 
+          }
+
+          function ShowInfoBox() {
+              map.ShowInfoBox(pin);
+          }
+
+          function HideInfoBox() {
+              map.HideInfoBox();
+          }
+
+          function ShowInfoBoxAt() {
+              var x = parseInt(document.getElementById('txtMapX').value);
+              var y = parseInt(document.getElementById('txtMapY').value);
+
+              map.HideInfoBox();
+
+              if (!isNaN(x) && !isNaN(y)) {
+                  map.ShowInfoBox(pin, new VEPixel(x, y));
+              }
+          }
+          function SetPinIcon(iconBase64) {
+              pinIcon = iconBase64;
+          }
+
+          /////////////////////////////////////////
+          /* Functions launching wpf functions   */
+          /////////////////////////////////////////
+          function NotifyActionChange() {
+              window.external.ActionChanged(action);
+          }
+
+          function NotifyPinAdded(latitude, longitude) {
+              window.external.PinAdded(latitude, longitude);
+          }
+          
+          function RetrieveCoordsFromMouse() {
+              window.external.RetrieveCoordsFromMouse();
+          }
+          /////////////////////////////////////////
+          /* Internal functions                  */
+          /////////////////////////////////////////
+          function OnClick(e) {
+              if (action == "pin") {
+                  ClearPins();
+                  var x = e.mapX;
+                  var y = e.mapY;
+                  pixel = new VEPixel(x, y);
+                  var LatLong = map.PixelToLatLong(pixel);
+                  RetrieveCoordsFromMouse();
+                  SetPin(LatLong.Latitude, LatLong.Longitude, map.GetZoomLevel(), "");
+                  SetAction("pan"); 
+                  return true; // prevent the default action
+              } else {
+                  x = e.mapX;
+                  y = e.mapY;
+                  pixel = new VEPixel(x, y);
+                  latLong = map.PixelToLatLong(pixel); 
+              }
+          }   
+                        
+      </script>
+   </head>
+   <body>
+      <div id='myMap' style="position:relative; width:100%; height:100%;"></div>
+      <div id="divInfo">&nbsp;<br /></div>
+   </body>
+</html>

@@ -1,0 +1,42 @@
+﻿<Window x:Class="AvengersUtd.Explore.Environment.Windows.PublishTemplate"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="PublishTemplate" Height="348" Width="432">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20*" />
+            <RowDefinition Height="35*" />
+            <RowDefinition Height="35*" />
+            <RowDefinition Height="35*" />
+            <RowDefinition Height="35*" />
+            <RowDefinition Height="35*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="108*" />
+            <ColumnDefinition Width="302*" />
+        </Grid.ColumnDefinitions>
+        
+        <StackPanel Grid.Column="1" HorizontalAlignment="Center" Margin="29,0,137,0">
+            <Label Content="Pubblicazione Template" Grid.Row="1" Grid.RowSpan="2" Height="28" HorizontalAlignment="Left" VerticalAlignment="Top" />
+
+
+        </StackPanel>
+        
+        <TextBox Height="23" Name="textBox1" VerticalAlignment="Top" Grid.Column="1" Grid.Row="3" />
+        <TextBox Height="23" Name="textBox2"  VerticalAlignment="Top" Grid.Column="1" Grid.Row="4" />
+        <TextBox Height="23" Name="textBox3" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1" />
+        <StackPanel  Grid.Column="1" Grid.Row="2"  Orientation="Horizontal">
+            <TextBox Height="23" HorizontalAlignment="Left" Name="textBox4" VerticalAlignment="Top" Width="220" Grid.Column="1" Grid.Row="2" />
+            <Button Content="Browse" Name="btnBrowse" VerticalAlignment="Top" Width="80" Height="23"></Button>
+        </StackPanel>
+        <Label Content="Nome template" Grid.Row="1" Height="28" HorizontalAlignment="Left" Name="label1" VerticalAlignment="Top" />
+        <Label Content="Publish Folder" Grid.Row="2" Height="28" HorizontalAlignment="Left" Name="label2" VerticalAlignment="Top" />
+        <Label Content="UserName" Grid.Row="3" Height="28" HorizontalAlignment="Left" Name="label3" VerticalAlignment="Top" />
+        <Label Content="Password" Grid.Row="4" Height="28" HorizontalAlignment="Left" Name="label4" VerticalAlignment="Top" />
+        <StackPanel Grid.ColumnSpan="2" HorizontalAlignment="Center"  Grid.Column="0" Grid.Row="5"  Orientation="Horizontal">
+            <Button Name="btnCancel" Content="Annulla" Margin="10" Height="23" Width="100"></Button>
+            <Button Name="btnOk" Content="Pubblica" Margin="10" Height="23" Width="100"></Button>
+        </StackPanel>
+
+    </Grid>
+</Window>

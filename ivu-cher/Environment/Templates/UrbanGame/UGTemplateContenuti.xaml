@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="AvengersUtd.Explore.Environment.Templates.UGTemplateContenuti"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d"
+             Width="240" Height="402"
+             MinWidth="240" MinHeight="402"
+             FontFamily="Tahoma"
+             x:Name="container" x:FieldModifier="private">
+
+    <StackPanel Height="402" Width="240"  Orientation="Vertical" >
+        <StackPanel.Background>
+            <ImageBrush ImageSource="/Environment;component/Icons/Android/contenutiBlank.jpg" Stretch="Fill"/>
+            
+        </StackPanel.Background>
+        <Border BorderBrush="LightGray" BorderThickness="1" Background="Transparent"></Border>
+        <StackPanel Orientation="Vertical" Margin="0 40 0 0" Height="320">
+            <TextBlock Text="{Binding ElementName=container, Path=Caption}" HorizontalAlignment="Center"  Height="34" FontWeight="Bold" FontSize="20" Margin="0 5 0 0" Foreground="White" />
+            <TextBlock Text="{Binding ElementName=container, Path=Description}" MaxHeight="176" Height="176" FontSize="14" TextWrapping="Wrap" Foreground="White" Margin="20 5 20 5" />
+        </StackPanel>
+    </StackPanel>
+
+</UserControl>

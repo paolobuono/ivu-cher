@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="AvengersUtd.Explore.Data.Templates.UrbanGameContextWrapper">
+    <Position X="3.5" Y="1.75" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <AssociationLine Name="ListAudioResources" Type="AvengersUtd.Explore.Data.Templates.RisorsaAudio" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="4.562" Y="3.565" />
+        <Point X="4.562" Y="5.156" />
+        <Point X="4.58" Y="5.156" />
+        <Point X="4.58" Y="6.5" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.578" Y="0.477" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="ListComments" Type="AvengersUtd.Explore.Data.Templates.Commento" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="3.5" Y="3.336" />
+        <Point X="2.812" Y="3.336" />
+        <Point X="2.812" Y="5.456" />
+        <Point X="1.573" Y="5.456" />
+        <Point X="1.573" Y="6.5" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.45" Y="0.429" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="ListDomande" Type="AvengersUtd.Explore.Data.Templates.Domanda" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="5.75" Y="3.375" />
+        <Point X="7.017" Y="3.375" />
+        <Point X="7.017" Y="4.468" />
+        <Point X="7.875" Y="4.468" />
+        <Point X="7.875" Y="6.5" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.45" Y="0.445" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="ListFoto" Type="AvengersUtd.Explore.Data.Templates.Fotografia" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="3.688" Y="3.565" />
+        <Point X="3.688" Y="6.125" />
+        <Point X="3.125" Y="6.125" />
+        <Point X="3.125" Y="6.5" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.259" Y="0.445" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="ListRicostruzione3d" Type="AvengersUtd.Explore.Data.Templates.ricostruzione3d" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="5.438" Y="3.565" />
+        <Point X="5.438" Y="5.033" />
+        <Point X="6.25" Y="5.033" />
+        <Point X="6.25" Y="6.5" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.562" Y="0.445" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>BQAQDAAQAQAAAAAAAAAAAAAAAAAEAAAAAAAAABAAAAQ=</HashCode>
+      <FileName>Templates\UrbanGameContextWrapper.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="stile" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Luoghi" />
+      <Property Name="ListAudioResources" />
+      <Property Name="ListComments" />
+      <Property Name="ListDomande" />
+      <Property Name="ListFoto" />
+      <Property Name="ListRicostruzione3d" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="AvengersUtd.Explore.Data.Templates.RisorsaAudio">
+    <Position X="4" Y="6.5" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AACAIAIAAAAAAAAAAAAACAAgAAAAAEAAAAAAAAAAAgA=</HashCode>
+      <FileName>Templates\UrbanGameItems.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AvengersUtd.Explore.Data.Templates.Commento">
+    <Position X="1" Y="6.5" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Templates\UrbanGameItems.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AvengersUtd.Explore.Data.Templates.Domanda">
+    <Position X="7.25" Y="6.5" Width="1.25" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAQBAAAAAIAAAAAAAAAAAAAAAiA=</HashCode>
+      <FileName>Templates\UrbanGameItems.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AvengersUtd.Explore.Data.Templates.Fotografia">
+    <Position X="2.5" Y="6.5" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAgA=</HashCode>
+      <FileName>Templates\UrbanGameItems.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AvengersUtd.Explore.Data.Templates.ricostruzione3d">
+    <Position X="5.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAgA=</HashCode>
+      <FileName>Templates\UrbanGameItems.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AvengersUtd.Explore.Data.Templates.MonumentXml">
+    <Position X="7.25" Y="1.75" Width="1.75" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AQAACAAAAAAAAAAAAEAAAAAAECAAAAAAAAEAEAYAAgA=</HashCode>
+      <FileName>Templates\UrbanGameItems.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AvengersUtd.Explore.Data.Templates.stile">
+    <Position X="1" Y="2" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgg=</HashCode>
+      <FileName>Templates\UrbanGameItems.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

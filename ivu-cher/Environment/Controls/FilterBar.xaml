@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="AvengersUtd.Explore.Environment.Controls.FilterBar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:Controls="clr-namespace:AvengersUtd.Explore.Environment.Controls" mc:Ignorable="d" 
+             d:DesignHeight="294" d:DesignWidth="64" BorderBrush="Black" >
+    <Border BorderBrush="Black" BorderThickness="1" Padding="4" Width="64" Background="{StaticResource DarkGrayGradient}">
+        <StackPanel Orientation="Vertical">
+            <TextBlock Text="Filters" Foreground="White"></TextBlock>
+            <StackPanel x:Name="buttonPanel" x:FieldModifier="private" MinWidth="64" HorizontalAlignment="Center" Orientation="Vertical" VerticalAlignment="Center">
+                <Controls:FilterButton Height="52" Width="52" ResourceType="Text"  Image="{StaticResource Documents}" Style="{StaticResource FilterButton}" Margin="0 0 0 2"/>
+                <Controls:FilterButton Height="52" Width="52" ResourceType="Image" Image="{StaticResource Pictures}" Style="{StaticResource FilterButton}" Margin="0 0 0 2"/>
+                <Controls:FilterButton Height="52" Width="52" ResourceType="Video" Image="{StaticResource Video}" Style="{StaticResource FilterButton}" Margin="0 0 0 2"/>
+                <Controls:FilterButton Height="52" Width="52" ResourceType="Audio" Image="{StaticResource Sound}" Style="{StaticResource FilterButton}" Margin="0 0 0 2"/>
+                <Controls:FilterButton Height="52" Width="52" ResourceType="Model" Image="{StaticResource '3D'}" Style="{StaticResource FilterButton}"/>
+            </StackPanel>
+        </StackPanel>
+    </Border>
+
+</UserControl>

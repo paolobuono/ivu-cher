@@ -1,0 +1,72 @@
+﻿<UserControl x:Class="AvengersUtd.Explore.Environment.Controls.SearchInterface"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:l="clr-namespace:AvengersUtd.Explore.Environment.Controls" mc:Ignorable="d" 
+             d:DesignHeight="629" d:DesignWidth="390">
+    <Border Background="#FFF0F0F0" BorderThickness="1" BorderBrush="DarkGray" Height="Auto" Width="Auto">
+        <DockPanel LastChildFill="True" Height="640" Width="384" FlowDirection="LeftToRight">
+            <TextBlock Text="Search Panel" FontWeight="Bold"
+                               Margin="4" DockPanel.Dock="Top"/>
+            <l:FilterBar x:Name="filterBar" DockPanel.Dock="Left" Height="614"/>
+            
+            <StackPanel Height="616" Width="320">
+                <ListBox Height="297" x:Name="results" x:FieldModifier="private"
+                         SelectionChanged="results_SelectionChanged"
+                         AllowDrop="True"
+                         ScrollViewer.VerticalScrollBarVisibility="Auto" Width="319">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" Height="36" 
+                                        PreviewMouseLeftButtonDown="StackPanelPreviewMouseLeftButtonDown" 
+                                        PreviewMouseMove="StackPanel_PreviewMouseMove">
+                                <Image Width="32" Height="32" Source="{Binding Path=Icon}" ToolTip="{Binding Path=Type}"/>
+                                <StackPanel Orientation="Vertical" Height="36" Width="Auto">
+                                    <TextBlock Text="{Binding Path=Title}" Margin= "0 4 0 0" FontWeight="DemiBold"/>
+                                    <TextBlock Text="{Binding Path=Tags}" FontSize="10" FontStyle="Italic" FontWeight="Light"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                <TabControl Name="tabControl" Width="320" Height="317" Background="{StaticResource DarkGrayGradient}">
+                    <TabItem Header="Preview" DataContext="{Binding ElementName=results, Path=SelectedItem}">
+                        <TabItem.Content>
+                            <DockPanel LastChildFill="True" Height="259">
+                                <TextBlock DockPanel.Dock="Top" Text="{Binding Path=Title}" FontSize="18" />
+                                <Button Content="Open" Width="128" FontSize="18" Click="Button_Click" DockPanel.Dock="Bottom" Height="32" />
+                                <Image Source="{Binding Path=PreviewUri}" Margin="0 8 0 8" Width="303" x:Name="imagePanel" x:FieldModifier="private" />
+                            </DockPanel>
+                        </TabItem.Content>
+                    </TabItem>
+                    <TabItem Header="Metadata">
+                        <TabItem.Content>
+                            <Grid Height="290">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="64" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="Title" FontSize="18" Grid.Row="0" Grid.Column="0" />
+                                <TextBox Text="{Binding Path=Title,Mode=OneWay}" Width="250" Grid.Row="0" Grid.Column="1" IsReadOnly="True" />
+                                <TextBlock Text="Tags" FontSize="18" Grid.Row="1" Grid.Column="0" />
+                                <TextBox Text="{Binding Path=Tags,Mode=OneWay}" Grid.Row="1" Grid.Column="1" IsReadOnly="True" Width="250" />
+                                <TextBlock Text="Type" FontSize="18" Grid.Row="2" Grid.Column="0" />
+                                <TextBox Text="{Binding Path=Type,Mode=OneWay}" Grid.Row="2" Grid.Column="1" IsReadOnly="True" Width="250" />
+                                <TextBlock Text="Uri" FontSize="18" Grid.Row="3" Grid.Column="0" />
+                                <TextBox Text="{Binding Path=UriString,Mode=OneWay}" Grid.Row="3" Grid.Column="1" IsReadOnly="True" Width="250" />
+                            </Grid>
+                        </TabItem.Content>
+                    </TabItem>
+                </TabControl>
+            </StackPanel>
+
+
+        </DockPanel>
+    </Border>
+</UserControl>

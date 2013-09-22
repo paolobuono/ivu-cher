@@ -1,0 +1,49 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+        
+    <DropShadowEffect x:Key="OrangeGlow" Color="Orange" BlurRadius="20" ShadowDepth="-2" />
+    
+    <LinearGradientBrush x:Key="DarkGrayGradient" EndPoint="0.5,1" StartPoint="0.5,0">
+        <GradientStop Color="#FF7C8186" Offset="1" />
+        <GradientStop Color="#FF86919A" Offset="0" />
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="RedGradient" StartPoint="0,0" EndPoint="0,1" >
+        <GradientStop Color="Red" Offset="0" />
+        <GradientStop Color="LightCoral" Offset="1" />
+        <GradientStop Color="DarkRed" Offset="0.50" />
+    </LinearGradientBrush>
+
+        <LinearGradientBrush x:Key="DarkBlueGradient" StartPoint="0,0" EndPoint="0,1" >
+        <GradientStop Color="#FF67657C" Offset="0" />
+        <GradientStop Color="#FF48465E" Offset="1" />
+        <GradientStop Color="#FF3B3A45" Offset="0.50" />
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="LightBlueGradient" EndPoint="0.5,1" StartPoint="0.5,0">
+        <GradientStop Color="#FF49ABF9" Offset="0" />
+        <GradientStop Color="#FF27217F" Offset="0.5" />
+        <GradientStop Color="#FF008DFF" Offset="1" />
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="ElementCaption" EndPoint="0.5,1" StartPoint="0.5,0">
+        <GradientStop Color="#FF0089FF" Offset="0" />
+        <GradientStop Color="#FFA3D2FF" Offset="1" />
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="DisabledCaption" EndPoint="0.5,1" StartPoint="0.5,0">
+        <GradientStop Color="#FF787878" Offset="0" />
+        <GradientStop Color="#FFCCCCCC" Offset="1" />
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="WM6Toolbar" EndPoint="0.5,1" StartPoint="0.5,0">
+        <GradientStop Color="#FFFAFAFA" Offset="0" />
+        <GradientStop Color="#FFE8E8E8" Offset="1" />
+    </LinearGradientBrush>
+
+    <!-- Brushes -->
+    <SolidColorBrush x:Key="ConnectorAvailable"  Color="#FFFFD700"/>
+    <SolidColorBrush x:Key="ConnectorUnconnected"  Color="WhiteSmoke"/>
+    <SolidColorBrush x:Key="ConnectedLink" Color="#FF6CC9E7"/>
+</ResourceDictionary>

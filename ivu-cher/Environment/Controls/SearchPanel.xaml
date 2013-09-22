@@ -1,0 +1,19 @@
+﻿<UserControl x:Class="AvengersUtd.Explore.Environment.Controls.SearchPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:l="clr-namespace:AvengersUtd.Explore.Environment.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="36" d:DesignWidth="512">
+    <Expander x:Name="expander" x:FieldModifier="private" ExpandDirection="Down">
+        <Expander.Header>
+            <l:SearchTextBox x:Name="tbSearch" x:FieldModifier="private" 
+                                 Width="128" Height="30" Margin="4" 
+                                 SearchMode="Instant"
+                                 HorizontalAlignment="Left"
+                                 Style="{StaticResource SearchTextBox}" KeyUp="tbSearch_KeyUp" Search="tbSearch_Search" />
+        </Expander.Header>
+        <l:SearchInterface x:Name="searchInterface" x:FieldModifier="private"></l:SearchInterface>
+    </Expander>
+</UserControl>

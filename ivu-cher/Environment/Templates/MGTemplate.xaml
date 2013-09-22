@@ -1,0 +1,29 @@
+﻿<UserControl x:Class="AvengersUtd.Explore.Environment.Templates.MuseumGuideMain"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d"
+             Width="280" Height="376"
+             MinWidth="280" MinHeight="376"
+             FontFamily="Tahoma"
+             x:Name="container" x:FieldModifier="private">
+
+    <StackPanel Orientation="Vertical" Background="Black">
+        <Image Source="/Environment;component/Preview/WM65Default.png" />
+        <Border BorderBrush="LightGray" BorderThickness="1" Background="{StaticResource WM6Toolbar}">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="/Environment;component/Preview/BackFw.png" />
+                <TextBlock Text="{Binding ElementName=container, Path=Caption}" HorizontalAlignment="Right" Height="34" FontWeight="Bold" FontSize="20" Margin="24 8 0 0" Foreground="Navy" />    
+            </StackPanel> 
+        </Border>
+        <Image Source="{Binding ElementName=container, Path=Image}" Height="196"/>
+        <Border Background="{StaticResource WM6Toolbar}" Padding="6">
+            <TextBlock Text="{Binding ElementName=container, Path=Description}" Height="68" FontSize="14" TextWrapping="Wrap" />
+        </Border>
+        <Border Background="Black" Height="24">
+            <TextBlock Text="Quit" Margin="32 4 0 0" Foreground="White" FontSize="14" FontWeight="Normal" />
+        </Border>
+    </StackPanel>
+   
+</UserControl>

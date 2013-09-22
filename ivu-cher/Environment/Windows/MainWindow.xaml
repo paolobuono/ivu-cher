@@ -1,0 +1,70 @@
+﻿<Window x:Class="AvengersUtd.Explore.Environment.Windows.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+        xmlns:Controls="clr-namespace:AvengersUtd.Explore.Environment.Controls" 
+        Title="Cultural Heritage Expert Workshop" 
+        Height="768" Width="1024" Background="#FFF0F0F0" Unloaded="Window_Unloaded" >
+    <DockPanel LastChildFill="True">
+        <Menu DockPanel.Dock="Top" Height="24">
+            <MenuItem Header="File">
+                <MenuItem Header="New.."/>
+                <MenuItem Header="Export to XML" x:Name="exportToXml" x:FieldModifier="private"
+                          Click="ExportToXml_Click"/>
+                <MenuItem Header="Export to HTML" x:Name="exportToHtml" x:FieldModifier="private"
+                          Click="exportToHtml_Click"/>
+                <MenuItem Header="Publish XML"  IsEnabled="False" x:Name="publishXml" x:FieldModifier="private"
+                          Click="PublishToXml_Click"/>
+                
+            </MenuItem>
+            
+            <MenuItem Header="Tools">
+                <MenuItem Header="Load index resources" ></MenuItem>
+                <MenuItem Header="Create new index of resources" Click="ReCreateDataFile_Click"></MenuItem>
+                <MenuItem Header="Add resources"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Help">
+                <MenuItem Header="View Help" Click="ViewHelp_Click"/>
+            </MenuItem>
+        </Menu>
+        
+        <Expander x:Name="previewExpander" x:FieldModifier="private" DockPanel.Dock="Right" Header="Preview" FontStretch="UltraCondensed" ExpandDirection="Left">
+            <TabControl x:Name="tabPreview" x:FieldModifier="private">
+                <TabItem Header="Web" Tag="Web" IsEnabled="False" x:Name="webTab" x:FieldModifier="private">
+                    <DockPanel LastChildFill="True">
+                        <WebBrowser x:Name="webBrowser" x:FieldModifier="private"/>
+                    </DockPanel>
+                </TabItem>
+                <TabItem Header="Windows Mobile" Tag="WM" x:Name="wmTab" x:FieldModifier="private">
+                    <Controls:WMPreviewPanel x:Name="wmPreview" x:FieldModifier="private"/>
+                </TabItem>
+                <TabItem Header="Multitouch" Tag="MT" IsEnabled="False" x:Name="mtTab" x:FieldModifier="private">
+                    <Controls:MTPreviewPanel x:Name="mtPreview" x:FieldModifier="private"/>
+                </TabItem>
+                <TabItem Header="Android" Tag="And" IsEnabled="False" x:Name="andTab" x:FieldModifier="private">
+                    <Controls:AndPreviewPanel x:Name="andPreview" x:FieldModifier="private" />
+                </TabItem>
+            </TabControl>
+        </Expander>
+        <!--<Controls:ToolBar DockPanel.Dock="Left"></Controls:ToolBar>-->
+        <Controls:BuildingBlockFilterBar DockPanel.Dock="Left"></Controls:BuildingBlockFilterBar>
+        <Expander x:Name="mapSearchExpander" x:FieldModifier="private" DockPanel.Dock="Left" Header="Resources" FontStretch="UltraCondensed" ExpandDirection="Right">
+            <TabControl x:Name="resPreview" x:FieldModifier="private">
+                <TabItem Header="Search" Tag="ST" IsEnabled="True" >
+                    <Controls:SearchPanel  x:Name="searchPanel" x:FieldModifier="private"   Visibility="Visible" Width="390" Height="678" VerticalAlignment="Top" />
+                </TabItem>
+                <TabItem Header="Map" Tag="Map" IsEnabled="True" x:Name="mapTab" x:FieldModifier="private" IsSelected="False">
+                    <Controls:MapPreviewPanel x:Name="mapPreview" x:FieldModifier="private" IsEnabled="True" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+                                              HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"/>
+                </TabItem>
+            </TabControl>
+        </Expander>
+
+
+        <Border BorderBrush="Black" BorderThickness="1" Margin="4,0,0,0">
+            <ScrollViewer HorizontalScrollBarVisibility="Auto">
+                <Controls:GridCanvas x:Name="workArea" x:FieldModifier="public" Width="2120" Height="2048" ClipToBounds="True" Background="White"></Controls:GridCanvas>
+            </ScrollViewer>
+        </Border>
+        
+    </DockPanel>
+</Window>

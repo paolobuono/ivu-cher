@@ -1,0 +1,17 @@
+﻿<Window x:Class="AvengersUtd.Explore.Environment.Windows.Wizard"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Controls="clr-namespace:AvengersUtd.Explore.Environment.Controls" Title="Wizard" Height="328" Width="622" Background="#FFF0F0F0" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="SingleBorderWindow">
+    <StackPanel Orientation="Vertical" >
+        <TextBlock Margin="8" Text="Welcome to the CH Expert workshop" FontSize="24"></TextBlock>
+        <TextBlock Margin="8" Text="To create a new application, choose a template from those available below:" FontSize="16" TextWrapping="Wrap" />
+        <Border Margin="8" BorderBrush="DarkGray" BorderThickness="1">
+            <StackPanel Orientation="Horizontal" Height="166" HorizontalAlignment="Center">
+                <Controls:ImageButton Width="128" Margin="8" Image="{StaticResource Puzzle}" Text="History Puzzle" Click="PuzzleButtonClick"></Controls:ImageButton>
+                <Controls:ImageButton Margin="8" Image="{StaticResource Museum}" Text="Museum Guide" Width="128" Click="MuseumButtonClick"/>
+                <Controls:ImageButton Margin="8" Image="{StaticResource Explore}" Text="Excursion Game" Width="128" Click="ExcursionGameButtonClick" />
+                <Controls:ImageButton Margin="8" Image="{StaticResource Urban}" Text="Urban Game" Width="128" Click="UrbanGameClick" />
+            </StackPanel>
+        </Border>
+    </StackPanel>
+</Window>
