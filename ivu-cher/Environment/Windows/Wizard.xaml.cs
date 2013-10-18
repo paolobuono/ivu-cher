@@ -21,9 +21,6 @@ namespace AvengersUtd.Explore.Environment.Windows
     {
         public Wizard()
         {
-
-
-
             InitializeComponent();
         }
 

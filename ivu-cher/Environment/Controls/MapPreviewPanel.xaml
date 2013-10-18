@@ -28,7 +28,9 @@
             </ToggleButton>
         </StackPanel>
 
-        <ListView MinHeight="100" Grid.Row="2" ItemsSource="{Binding SearchResults}" Name="lwResults" SelectionMode="Single" MouseDoubleClick="lwResults_MouseDoubleClick" Margin="5,5,0,5" IsEnabled="False" HorizontalAlignment="Left" Width="407">
+        <ListView MinHeight="100" Grid.Row="2" ItemsSource="{Binding SearchResults}" Name="lwResults" SelectionMode="Single"                   
+                  Margin="5,5,0,5" IsEnabled="False" HorizontalAlignment="Left" Width="407"
+                  MouseDoubleClick="lwResults_MouseDoubleClick" SelectionChanged="lwResults_SelectionChanged">
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding Address.FormattedAddress}" Width="200">Address</GridViewColumn>

@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
         xmlns:Controls="clr-namespace:AvengersUtd.Explore.Environment.Controls" 
         Title="Cultural Heritage Expert Workshop" 
-        Height="768" Width="1024" Background="#FFF0F0F0" Unloaded="Window_Unloaded" >
+        Height="768" Width="1024" Background="#FFF0F0F0" Unloaded="Window_Unloaded" Closing="Window_Closing">
     <DockPanel LastChildFill="True">
         <Menu DockPanel.Dock="Top" Height="24">
             <MenuItem Header="File">
