@@ -318,7 +318,7 @@
                     </AdornerDecorator>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsChecked" Value="true">
-                            <Setter Property="Background" TargetName="border" Value="{StaticResource RedGradient}"/>
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource LightBlueGradient}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
