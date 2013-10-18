@@ -21,6 +21,7 @@ using AvengersUtd.Explore.Environment.GeocodeService;
 using AvengersUtd.Explore.Environment.ImageryService;
 using AvengersUtd.Explore.Environment.Windows; 
 using Microsoft.Maps.MapControl.WPF;
+using System.Reflection;
 
 namespace AvengersUtd.Explore.Environment.Controls
 {
@@ -38,6 +39,7 @@ namespace AvengersUtd.Explore.Environment.Controls
         private string m_Latitude = string.Empty;
         private string vPosition;
         List<LastPinAdded> vListLastPins = new List<LastPinAdded>();
+        private Assembly thisExe;
       
         #region Constructor
         public MapPreviewPanel()
@@ -46,14 +48,17 @@ namespace AvengersUtd.Explore.Environment.Controls
             ObjectForScriptingHelper helper = new ObjectForScriptingHelper(this);
             wbMain.ObjectForScripting = helper;
             wbMain.LoadCompleted += new LoadCompletedEventHandler(OnLoadCompleted);
+             
+            thisExe = System.Reflection.Assembly.GetExecutingAssembly();
+
             LoadPage();
         }
         #endregion
         
         private void LoadPage()
         {
-            Uri uri = new Uri(@"pack://application:,,,/BingMapPage.htm");
-            Stream source = Application.GetContentStream(uri).Stream;
+            // Load the specified HTML file which is marked as the project's embedded resource.
+            Stream source = Assembly.GetExecutingAssembly().GetManifestResourceStream("AvengersUtd.Explore.Environment.BingMapPage.htm");
             wbMain.NavigateToStream(source);
         }
 
@@ -64,8 +69,6 @@ namespace AvengersUtd.Explore.Environment.Controls
                 wbMain.InvokeScript("SetKey", new object[] { m_BingKey });
                 wbMain.InvokeScript("GetMap", new object[] { });
 
-                System.Reflection.Assembly thisExe;
-                thisExe = System.Reflection.Assembly.GetExecutingAssembly();
 
                 string encoded = string.Empty;
                 using (System.IO.Stream file = thisExe.GetManifestResourceStream("AvengersUtd.Explore.Environment.Icons.pinPosition.gif"))
@@ -313,6 +316,17 @@ namespace AvengersUtd.Explore.Environment.Controls
 
         private void lwResults_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
+            //AddPinFromResults();
+            
+        }
+
+        //private void lwResults_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        //{
+        //    AddPinFromResults();
+        //}
+
+        private void AddPinFromResults()
+        {
             GeocodeService.GeocodeResult res = lwResults.SelectedItem as GeocodeService.GeocodeResult;
             if (res != null)
             {
@@ -335,7 +349,7 @@ namespace AvengersUtd.Explore.Environment.Controls
                     MessageBox.Show(ex.Message);
                 }
             }
-        }
+        } 
 
         private void btnPin_Checked(object sender, RoutedEventArgs e)
         {
@@ -374,6 +388,23 @@ namespace AvengersUtd.Explore.Environment.Controls
             ugMonument.tbLongitudine.Text = m_Longitude;
         }
         #endregion
+
+        private void lwResults_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            AddPinFromResults();
+        }
+
+        private void myMap_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtSearch.Text))
+                return;
+
+            string address = txtSearch.Text;
+
+            StartSearch(address);
+        }
+
+
     }
 
     public class LastPinAdded

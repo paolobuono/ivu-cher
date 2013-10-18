@@ -232,5 +232,11 @@ namespace AvengersUtd.Explore.Environment.Windows
         {
             Directory.Delete(Global.ExecutionPath + "\\temp", true);
         }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (MessageBox.Show("Are you sure you want to quit?", this.Title, MessageBoxButton.YesNo, MessageBoxImage.Asterisk) == MessageBoxResult.No)
+                e.Cancel = true;
+        }
     }
 }
