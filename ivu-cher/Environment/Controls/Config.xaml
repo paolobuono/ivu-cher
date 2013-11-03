@@ -1,0 +1,12 @@
+﻿<Window x:Class="AvengersUtd.Explore.Environment.Controls.Config"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Template Config" Height="213" Width="468" ResizeMode="NoResize">
+    <Grid >
+        <Label Content="Resources directory:" Height="28" HorizontalAlignment="Left" Margin="15,22,0,0" Name="label1" VerticalAlignment="Top" />
+        <CheckBox Content="Ask on startup" Height="16" HorizontalAlignment="Left" Margin="17,116,0,0" Name="chkAskOnStartup" VerticalAlignment="Top"/>
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="17,60,0,0" Name="tbDirectory" VerticalAlignment="Top" Width="347" />
+        <Button Content="Open..." Height="24" HorizontalAlignment="Left" Margin="371,59,0,0" Name="btnFolderBrowser" VerticalAlignment="Top" Width="63" Click="btnFolderBrowser_Click" />
+        <Button Content="OK" Height="24" HorizontalAlignment="Left" Margin="379,146,0,0" Name="btnOK" VerticalAlignment="Top" Width="63" Click="btnOK_Click" />
+    </Grid>
+</Window>

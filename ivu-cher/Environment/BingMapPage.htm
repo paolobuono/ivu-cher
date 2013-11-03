@@ -66,24 +66,24 @@
               }
               pin.Draggable = true; 
               // Assign the shape drag event handlers 
-              pin.onstartdrag = StartDragHandler;
-              pin.ondrag = DragHandler;
-              pin.onenddrag = EndDragHandler; 
+//              pin.onstartdrag = StartDragHandler;
+//              pin.ondrag = DragHandler;
+//              pin.onenddrag = EndDragHandler; 
               // Show an info box to indicate the pushpin can be dragged.  
               map.ClearInfoBoxStyles();
               map.AddShape(pin);
               NotifyPinAdded(veLatLong.Latitude, veLatLong.Longitude);
 
           }
-          function StartDragHandler(e) {
-              document.getElementById("divInfo").innerHTML = "Dragging started (onstartdrag event)."; 
-          } 
-          function DragHandler(e) {
-              document.getElementById("divInfo").innerHTML = "Dragging in process (ondrag event)."; 
-          } 
-          function EndDragHandler(e) {
-              document.getElementById("divInfo").innerHTML = "Dragging stopped (onenddrag event)."; 
-          }
+//          function StartDragHandler(e) {
+//              document.getElementById("divInfo").innerHTML = "Dragging started (onstartdrag event)."; 
+//          } 
+//          function DragHandler(e) {
+//              document.getElementById("divInfo").innerHTML = "Dragging in process (ondrag event)."; 
+//          } 
+//          function EndDragHandler(e) {
+//              document.getElementById("divInfo").innerHTML = "Dragging stopped (onenddrag event)."; 
+//          }
 
           function ShowInfoBox() {
               map.ShowInfoBox(pin);
@@ -141,8 +141,8 @@
                   pixel = new VEPixel(x, y);
                   latLong = map.PixelToLatLong(pixel); 
               }
-          }   
-                        
+          } 
+                    
       </script>
    </head>
    <body>
