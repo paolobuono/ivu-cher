@@ -137,6 +137,12 @@ namespace AvengersUtd.Explore.Data
             set;
         }
 
+        public static String ResourceFolder
+        {
+            get;
+            set;
+        }
+
         /// <summary>
         /// Deserializes an object of type <c>T</c> stored in a Xml file.
         /// </summary>

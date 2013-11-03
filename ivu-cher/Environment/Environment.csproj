@@ -97,7 +97,11 @@
       <DependentUpon>BuildingBlockFilterBar.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\BuildingBlockFilterButton.cs" />
+    <Compile Include="Controls\Config.xaml.cs">
+      <DependentUpon>Config.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\CounterAdorner.cs" />
+    <Compile Include="Controls\ConnectorAdorner.cs" />
     <Compile Include="Controls\Elements\ElementArgs.cs" />
     <Compile Include="Controls\ElementButton.cs" />
     <Compile Include="Controls\Elements\Connector.cs" />
@@ -236,6 +240,10 @@
     <Page Include="Controls\BuildingBlockFilterBar.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Config.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\CustomSplashScreen.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -586,7 +594,9 @@
     <EmbeddedResource Include="Icons\pinPosition.gif" />
     <Resource Include="Icons\Android\welcomescreenBlank.jpg" />
     <Resource Include="Icons\Android\contenutiBlank.jpg" />
-    <Content Include="BingMapPage.htm" />
+    <EmbeddedResource Include="BingMapPage.htm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
     <Content Include="Help.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

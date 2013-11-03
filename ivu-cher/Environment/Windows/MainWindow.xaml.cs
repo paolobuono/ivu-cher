@@ -129,7 +129,7 @@ namespace AvengersUtd.Explore.Environment.Windows
             publishWindow.ShowDialog();
         }
             
-         private void ExportToXml_Click(object sender, RoutedEventArgs e)
+        private void ExportToXml_Click(object sender, RoutedEventArgs e)
         {
             Exporter exporter = new Exporter(workArea);
 
@@ -237,6 +237,7 @@ namespace AvengersUtd.Explore.Environment.Windows
         {
             if (MessageBox.Show("Are you sure you want to quit?", this.Title, MessageBoxButton.YesNo, MessageBoxImage.Asterisk) == MessageBoxResult.No)
                 e.Cancel = true;
+            
         }
     }
 }
