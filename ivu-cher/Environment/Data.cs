@@ -38,9 +38,11 @@ namespace AvengersUtd.Explore.Data
             }
         }
 
-        internal static void ReCreateResources()
+        internal static void ReCreateResources(bool delete = true)
         {
-            new FileInfo(getDataFilePath()).Delete();
+            if(delete)            
+                new FileInfo(getDataFilePath()).Delete();
+
             DataManager.Resources = LoadResource();
         }
 
@@ -61,7 +63,7 @@ namespace AvengersUtd.Explore.Data
             DialogResult dialogres = folderDialog.ShowDialog();
             if (dialogres == DialogResult.OK)
             {
-                var path = folderDialog.SelectedPath;
+                var path = DataManager.ResourceFolder = folderDialog.SelectedPath;
                 DirectoryInfo dir = new DirectoryInfo(path);
                 files= dir.GetFiles("*.*", SearchOption.TopDirectoryOnly);
             }
@@ -128,7 +130,7 @@ namespace AvengersUtd.Explore.Data
 
         private static string getDataFilePath()
         {
-            return new FileInfo(System.Windows.Application.ResourceAssembly.Location).DirectoryName + "\\data.xml";
+            return new FileInfo(string.IsNullOrEmpty(ResourceFolder) ? System.Windows.Application.ResourceAssembly.Location : ResourceFolder).DirectoryName + "\\data.xml";
         }
 
         public static AbstractResource[] Resources
