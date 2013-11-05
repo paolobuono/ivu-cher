@@ -45,10 +45,24 @@ namespace AvengersUtd.Explore.Environment
             if (File.Exists(iniPath))
             {
                 settingsDictionary = ReadFromIni(iniPath);
+                
                 DataManager.ResourceFolder = settingsDictionary[TemplateConfig_Directory];
+                DataManager.ReCreateResources(false);
+
                 AskOnStartup = Convert.ToBoolean(settingsDictionary[TemplateConfig_AskOnStartup]);
-                Config config = new Config(DataManager.ResourceFolder, AskOnStartup, settingsDictionary, iniPath, app);
-                config.ShowDialog();
+                if (AskOnStartup)
+                {
+                    Config config = new Config(DataManager.ResourceFolder, AskOnStartup, settingsDictionary, iniPath, app);
+                    config.ShowDialog();
+                }
+                else
+                {
+                    //MainWindow mainWindow = new MainWindow();
+                    Wizard wizard = new Wizard();
+
+                    app.Run(wizard);
+                    //app.Run(mainWindow);
+                }
             }
             else
             {

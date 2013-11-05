@@ -13,6 +13,7 @@ using System.Windows.Shapes;
 using System.Windows.Forms;
 using System.ComponentModel;
 using AvengersUtd.Explore.Environment.Windows;
+using AvengersUtd.Explore.Data;
 
 namespace AvengersUtd.Explore.Environment.Controls
 {
@@ -24,11 +25,7 @@ namespace AvengersUtd.Explore.Environment.Controls
         private string ResourceFolder;
         private bool? AskOnStartup;
         private Dictionary<string, string> SettingsDictionary;
-        private string IniPath;
-        private string p;
-        private bool AskOnStartup_2;
-        private Dictionary<string, string> settingsDictionary;
-        private string iniPath;
+        private string IniPath; 
         private App App;
         
         public Config(string resourceFolder, bool askOnStartup, Dictionary<string, string> settingsDictionary, string iniPath, App app)
@@ -45,13 +42,9 @@ namespace AvengersUtd.Explore.Environment.Controls
     
         private void btnFolderBrowser_Click(object sender, RoutedEventArgs e)
         {
-            FolderBrowserDialog dialog = new FolderBrowserDialog();            
-            dialog.SelectedPath = !string.IsNullOrEmpty(tbDirectory.Text) ? tbDirectory.Text : System.Environment.SpecialFolder.MyComputer.ToString();
-            
-            if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                tbDirectory.Text = dialog.SelectedPath;
-            }
+            DataManager.ReCreateResources();
+            if(!string.IsNullOrEmpty(DataManager.ResourceFolder))
+                tbDirectory.Text = DataManager.ResourceFolder;
         }
 
         private void btnOK_Click(object sender, RoutedEventArgs e)
@@ -59,8 +52,7 @@ namespace AvengersUtd.Explore.Environment.Controls
             SettingsDictionary[Program.TemplateConfig_Directory] = tbDirectory.Text;
             SettingsDictionary[Program.TemplateConfig_AskOnStartup] = chkAskOnStartup.IsChecked.Value.ToString();
 
-            Program.WriteToIni(IniPath, SettingsDictionary);
-
+            Program.WriteToIni(IniPath, SettingsDictionary); 
 
             //MainWindow mainWindow = new MainWindow();
             Wizard wizard = new Wizard();
