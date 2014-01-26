@@ -64,8 +64,10 @@ namespace AvengersUtd.Explore.Environment.Windows
             exportToHtml.IsEnabled = false;
             wmTab.IsEnabled = mtTab.IsEnabled = false;
             mtTab.IsEnabled = true;
-            tabPreview.SelectedIndex = 2;
-
+            
+            mapTab.Visibility = System.Windows.Visibility.Collapsed;
+            
+            tabPreview.SelectedIndex = 2;             
             workArea.AddElement(e);
             mtPreview.Content = new HPTemplate();
         }
@@ -78,6 +80,8 @@ namespace AvengersUtd.Explore.Environment.Windows
             webTab.IsEnabled = mtTab.IsEnabled = wmTab.IsEnabled = false;
             andTab.IsEnabled = true;
             
+            mapTab.Visibility = System.Windows.Visibility.Visible; 
+
             tabPreview.SelectedIndex = 3;
             resPreview.SelectedIndex = 1; 
             workArea.AddElement(new Explore.Environment.Controls.Elements.UG_Elements.UG_CityElement { Caption = "City" });
@@ -92,6 +96,8 @@ namespace AvengersUtd.Explore.Environment.Windows
             exportToXml.IsEnabled = exportToHtml.IsEnabled = true;
             wmTab.IsEnabled = webTab.IsEnabled = true;
             mtTab.IsEnabled = false;
+            mapTab.Visibility = System.Windows.Visibility.Collapsed; 
+
             tabPreview.SelectedIndex = 0;
             workArea.AddElement(e);
         }
@@ -106,6 +112,9 @@ namespace AvengersUtd.Explore.Environment.Windows
             exportToHtml.IsEnabled = false;
             wmTab.IsEnabled = true;
             webTab.IsEnabled = mtTab.IsEnabled = false;
+            mapTab.Visibility = System.Windows.Visibility.Collapsed;
+            mapTab.IsEnabled = false;
+
             tabPreview.SelectedIndex = 1;
             workArea.AddElement(e);
 
@@ -163,7 +172,7 @@ namespace AvengersUtd.Explore.Environment.Windows
                     case Data.Resources.TemplateType.MuseumGuide:
                         exporter.ExportMuseumGuideXML(path);
                         break;
-                    case Data.Resources.TemplateType.ExcursionGame:
+                    case Data.Resources.TemplateType.ExcursionGame: 
                         success = exporter.ExportExcursionGameXML(path);
                         break;
                     case Data.Resources.TemplateType.UrbanGame:
