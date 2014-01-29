@@ -48,20 +48,28 @@ namespace AvengersUtd.Explore.Environment
                 
                 DataManager.ResourceFolder = settingsDictionary[TemplateConfig_Directory];
                 DataManager.ReCreateResources(false);
-
-                AskOnStartup = Convert.ToBoolean(settingsDictionary[TemplateConfig_AskOnStartup]);
-                if (AskOnStartup)
+                try
                 {
-                    Config config = new Config(DataManager.ResourceFolder, AskOnStartup, settingsDictionary, iniPath, app);
-                    config.ShowDialog();
+
+                    AskOnStartup = Convert.ToBoolean(settingsDictionary[TemplateConfig_AskOnStartup]);
+                    if (AskOnStartup)
+                    {
+                        Config config = new Config(DataManager.ResourceFolder, AskOnStartup, settingsDictionary, iniPath, app);
+                        config.ShowDialog();
+                    }
+                    else
+                    {
+                        //MainWindow mainWindow = new MainWindow();
+                        Wizard wizard = new Wizard();
+
+                        app.Run(wizard);
+                        //app.Run(mainWindow);
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
-                    //MainWindow mainWindow = new MainWindow();
-                    Wizard wizard = new Wizard();
 
-                    app.Run(wizard);
-                    //app.Run(mainWindow);
+                    MessageBox.Show(string.Format("Explore.ini in \n {0} \n contains incorrect value",iniPath),"Explore", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
