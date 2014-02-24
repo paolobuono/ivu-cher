@@ -10,6 +10,7 @@ using System.Text;
 using AvengersUtd.Explore.Environment;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 
 #endregion
 
@@ -25,10 +26,26 @@ namespace AvengersUtd.Explore.Data
 
         #endregion
 
+        #region Configuration Keys
+        public const string Section_TemplateConfig = "TEMPLATE CONFIG";
+
+        // Template config.
+        public const string TemplateConfig_Directory = "Directory";
+        public const string TemplateConfig_AskOnStartup = "AskOnStartup";
+
+
+        public static string FileName = "\\Explore.ini";
+        public static bool AskOnStartup = false;
+        #endregion
+
+        public static string iniPath = "";
+        public static Dictionary<string, string> settingsDictionary;
+
         static DataManager()
         {
             try
             {
+                iniPath = GetIniPath(System.Reflection.Assembly.GetExecutingAssembly().Location);
                 DataManager.Resources = LoadResource();
 
             }
@@ -224,6 +241,108 @@ namespace AvengersUtd.Explore.Data
         }
 
 
- 
+        #region Ini
+        [DllImport("kernel32")]
+        private static extern long WritePrivateProfileString(string section, string key, string val, string filePath);
+        [DllImport("kernel32")]
+        private static extern int GetPrivateProfileString(string section, string key, string def, StringBuilder retVal, int size, string filePath);
+
+        /// <summary>
+        /// Return .ini file path.
+        /// </summary>
+        /// <param name="path">Application Exe current path.</param>
+        /// <returns>Path .ini file.</returns>
+        public static string GetIniPath(string path)
+        {
+            if (string.IsNullOrEmpty(path))
+                return FileName;
+            return new FileInfo(path).DirectoryName + FileName;
+        }
+
+        /// <summary>
+        /// Create .ini file empty
+        /// </summary>
+        /// <param name="path">Path del file di configurazione.</param>
+        public static void CreateEmptyFile(string path)
+        {
+            // Template config.
+            WritePrivateProfileString(Section_TemplateConfig, TemplateConfig_Directory, string.Empty, path);
+        }
+
+        /// <summary>
+        /// Create dictionary for store .ini values
+        /// </summary>
+        /// <returns>Dictionary with .ini file values.</returns>
+        public static Dictionary<string, string> CreateEmptySettingsDictionary()
+        {
+            Dictionary<string, string> dicToReturn = new Dictionary<string, string>();
+
+            // Template config. 
+            dicToReturn.Add(TemplateConfig_Directory, System.Environment.GetFolderPath(System.Environment.SpecialFolder.Desktop));
+            dicToReturn.Add(TemplateConfig_AskOnStartup, true.ToString());
+
+            return dicToReturn;
+        }
+
+        /// <summary>
+        /// Read from .ini file.
+        /// </summary>
+        /// <param name="path">Path .ini file.</param>
+        /// <returns>Dictionary with file .ini values.</returns>
+        public static Dictionary<string, string> ReadFromIni(string path)
+        {
+            Dictionary<string, string> dicToReturn = new Dictionary<string, string>();
+            StringBuilder value;
+
+            if (File.Exists(path))
+            {
+                // Template config.
+                value = new StringBuilder(255);
+                GetPrivateProfileString(Section_TemplateConfig, TemplateConfig_Directory, string.Empty, value, 255, path);
+                dicToReturn.Add(TemplateConfig_Directory, value.ToString());
+                value = new StringBuilder(255);
+                GetPrivateProfileString(Section_TemplateConfig, TemplateConfig_AskOnStartup, string.Empty, value, 255, path);
+                dicToReturn.Add(TemplateConfig_AskOnStartup, value.ToString());
+            }
+            return dicToReturn;
+        }
+
+        /// <summary>
+        /// Write .ini file from dictionary content.
+        /// </summary>
+        /// <param name="path">Path .ini file.</param>
+        /// <param name="dictionary">Dictionary content for .ini file.</param>
+        public static void WriteToIni(string path, Dictionary<string, string> dictionary)
+        {
+            // Template config.
+            WritePrivateProfileString(Section_TemplateConfig, TemplateConfig_Directory, dictionary[TemplateConfig_Directory], path);
+            WritePrivateProfileString(Section_TemplateConfig, TemplateConfig_AskOnStartup, dictionary[TemplateConfig_AskOnStartup], path);
+
+        }
+        
+
+
+
+        internal static void LoadFromIniFile()
+        {
+            settingsDictionary = ReadFromIni(iniPath);
+
+            ResourceFolder = settingsDictionary[TemplateConfig_Directory];
+            ReCreateResources(false);
+
+            AskOnStartup = Convert.ToBoolean(settingsDictionary[TemplateConfig_AskOnStartup]);
+        }
+
+        internal static void CreateDefaultIni()
+        {
+            CreateEmptyFile(iniPath);
+            settingsDictionary = CreateEmptySettingsDictionary();
+
+            // Template config.
+            //settingsDictionary[TemplateConfig_Directory] = "";
+            //settingsDictionary[TemplateConfig_AskOnStartup] = "true";
+            WriteToIni(iniPath, settingsDictionary);
+        }
+        #endregion
     }
 }
