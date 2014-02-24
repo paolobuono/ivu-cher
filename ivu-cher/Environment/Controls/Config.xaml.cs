@@ -49,10 +49,10 @@ namespace AvengersUtd.Explore.Environment.Controls
 
         private void btnOK_Click(object sender, RoutedEventArgs e)
         {
-            SettingsDictionary[Program.TemplateConfig_Directory] = tbDirectory.Text;
-            SettingsDictionary[Program.TemplateConfig_AskOnStartup] = chkAskOnStartup.IsChecked.Value.ToString();
+            SettingsDictionary[DataManager.TemplateConfig_Directory] = tbDirectory.Text;
+            SettingsDictionary[DataManager.TemplateConfig_AskOnStartup] = chkAskOnStartup.IsChecked.Value.ToString();
 
-            Program.WriteToIni(IniPath, SettingsDictionary); 
+            DataManager.WriteToIni(IniPath, SettingsDictionary); 
 
             //MainWindow mainWindow = new MainWindow();
             Wizard wizard = new Wizard();
