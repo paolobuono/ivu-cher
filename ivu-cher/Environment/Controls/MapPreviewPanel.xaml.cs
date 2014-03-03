@@ -22,6 +22,7 @@ using AvengersUtd.Explore.Environment.ImageryService;
 using AvengersUtd.Explore.Environment.Windows; 
 using Microsoft.Maps.MapControl.WPF;
 using System.Reflection;
+using System.Net;
 
 namespace AvengersUtd.Explore.Environment.Controls
 {
@@ -44,7 +45,8 @@ namespace AvengersUtd.Explore.Environment.Controls
         #region Constructor
         public MapPreviewPanel()
         {
-            InitializeComponent();
+            InitializeComponent(); 
+
             ObjectForScriptingHelper helper = new ObjectForScriptingHelper(this);
             wbMain.ObjectForScripting = helper;
             wbMain.LoadCompleted += new LoadCompletedEventHandler(OnLoadCompleted);
@@ -123,6 +125,12 @@ namespace AvengersUtd.Explore.Environment.Controls
             GeocodeOptions geocodeOptions = new GeocodeOptions();
             geocodeOptions.Filters = filters;
             geocodeRequest.Options = geocodeOptions;
+
+            ServicePointManager.UseNagleAlgorithm = true;
+            // Switch off 100 continue expectation
+            ServicePointManager.Expect100Continue = false;
+            ServicePointManager.CheckCertificateRevocationList = true;
+            ServicePointManager.DefaultConnectionLimit = ServicePointManager.DefaultPersistentConnectionLimit;
 
             // Make the geocode request
             m_SearchResults.Clear();
@@ -382,6 +390,12 @@ namespace AvengersUtd.Explore.Environment.Controls
             
             if (ugMonument == null)
                 return;
+            
+            if((GeocodeResult)lwResults.SelectedItem == null)
+            {
+                MessageBox.Show("No coordinates for address specified", "Explore", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
 
             ugMonument.tbNome.Text = ((GeocodeResult)(lwResults.SelectedItem)).DisplayName;
             ugMonument.tbLatitudine.Text = m_Latitude;
