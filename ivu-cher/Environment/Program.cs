@@ -52,7 +52,7 @@ namespace AvengersUtd.Explore.Environment
                         //app.Run(mainWindow);
                     }
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
 
                     MessageBox.Show(string.Format("Explore.ini in \n {0} \n contains incorrect value", DataManager.iniPath), "Explore", MessageBoxButtons.OK, MessageBoxIcon.Error);
