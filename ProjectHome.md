@@ -1,0 +1,2 @@
+This project follows the CHER (Cultural HEritage Resource) model and the PIS (Personal Information Space) in order to create meta information that instantiate a tour in a site. The site can be an open museum, a touristic city, etc.
+This project forks a previous one, which has been conducted within a PhD thesis program. The project is reachable at this link: http://adalphd.googlecode.com/svn/trunk/
